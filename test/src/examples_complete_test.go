@@ -12,7 +12,7 @@ import (
 func TestExamplesCluster(t *testing.T) {
 	t.Parallel()
 
-	terraformOptions := &terraform.Options{TerraformDir: "../../examples/cluster"}
+	terraformOptions := &terraform.Options{TerraformDir: "../../examples/complete"}
 	defer terraform.Destroy(t, terraformOptions)
 
 	terraform.InitAndApplyAndIdempotent(t, terraformOptions)

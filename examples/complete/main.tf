@@ -30,4 +30,5 @@ module "aws_mq_broker" {
   subnet_ids               = module.vpc.private_subnets_ids
   deployment_mode          = "CLUSTER_MULTI_AZ"
   host_instance_type       = "mq.m5.large"
+  git                      = local.git
 }
