@@ -4,11 +4,6 @@ provider "aws" {
 
 locals {
   git = "terraform-aws-mq"
-  tags = {
-    git     = local.git
-    cost    = "shared"
-    creator = "terraform"
-  }
 }
 
 module "vpc" {
