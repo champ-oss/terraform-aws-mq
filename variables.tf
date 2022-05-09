@@ -86,3 +86,9 @@ variable "maintenance_time_zone" {
   default     = "UTC"
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#time_zone"
 }
+
+variable "cidr_allow_list" {
+  description = "list to allow security group"
+  type        = list(any)
+  default     = null
+}
