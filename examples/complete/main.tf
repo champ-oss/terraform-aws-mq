@@ -22,9 +22,9 @@ module "aws_mq_broker" {
   source                   = "../../"
   vpc_id                   = module.vpc.vpc_id
   source_security_group_id = aws_security_group.test.id
-  subnet_ids               = module.vpc.private_subnets_ids[0]
-  deployment_mode          = "SINGLE_INSTANCE"
-  host_instance_type       = "mq.t3.micro"
+  subnet_ids               = module.vpc.private_subnets_ids
+  deployment_mode          = "CLUSTER_MULTI_AZ"
+  host_instance_type       = "mq.m5.large"
   git                      = local.git
   cidr_allow_list          = null
 }
