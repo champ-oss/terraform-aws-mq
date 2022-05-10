@@ -5,6 +5,7 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
 	"testing"
+	"os/exec"
 )
 
 // TestExamplesComplete tests a typical deployment of this module. It will verify the SSM parameter is set correctly
