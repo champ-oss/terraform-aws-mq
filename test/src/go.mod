@@ -1,4 +1,4 @@
-module github.com/champtitles/terraform-aws-mq
+module github.com/champ-oss/terraform-aws-mq
 
 go 1.17
 

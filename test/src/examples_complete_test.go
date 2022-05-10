@@ -8,8 +8,7 @@ import (
 	"os/exec"
 )
 
-// TestExamplesComplete tests a typical deployment of this module. It will verify the SSM parameter is set correctly
-// and that snapshots are all working as expected.
+// terratest assert output and expected values
 func TestExamplesCluster(t *testing.T) {
 	t.Parallel()
 
