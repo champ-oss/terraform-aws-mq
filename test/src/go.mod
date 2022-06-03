@@ -3,7 +3,7 @@ module github.com/champ-oss/terraform-aws-mq
 go 1.17
 
 require (
-	github.com/gruntwork-io/terratest v0.40.12
+	github.com/gruntwork-io/terratest v0.40.13
 	github.com/stretchr/testify v1.7.1
 	golang.org/x/net v0.0.0-20211216030914-fe4d6282115f // indirect
 )
@@ -22,7 +22,7 @@ require (
 	github.com/googleapis/gax-go/v2 v2.0.5 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
-	github.com/hashicorp/go-getter v1.5.9 // indirect
+	github.com/hashicorp/go-getter v1.5.11 // indirect
 	github.com/hashicorp/go-multierror v1.1.0 // indirect
 	github.com/hashicorp/go-safetemp v1.0.0 // indirect
 	github.com/hashicorp/go-version v1.3.0 // indirect
