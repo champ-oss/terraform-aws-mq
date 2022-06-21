@@ -33,8 +33,8 @@ resource "aws_mq_broker" "mq" {
   storage_type               = var.storage_type
 
   logs {
-    general = false
-    audit   = false
+    general = var.enable_general_logs
+    audit   = var.enable_audit_logs
   }
 
   maintenance_window_start_time {
