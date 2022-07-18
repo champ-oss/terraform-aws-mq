@@ -33,5 +33,8 @@ terraform amazon mq broker resource documentation  [_here_](https://registry.ter
 
 * look at examples/complete/main.tf for usage 
 
+<!-- BEGIN_TF_DOCS -->
+<!-- END_TF_DOCS -->
+
 ## Project Status
 Project is: _in_progress_ 
