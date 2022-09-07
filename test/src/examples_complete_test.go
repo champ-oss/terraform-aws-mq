@@ -4,11 +4,11 @@ import (
 	"github.com/gruntwork-io/terratest/modules/logger"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
-	"testing"
 	"os/exec"
+	"testing"
 )
 
-// terratest assert output and expected values
+// TestExamplesCluster assert output and expected values
 func TestExamplesCluster(t *testing.T) {
 	t.Parallel()
 
