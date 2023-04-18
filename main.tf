@@ -12,7 +12,7 @@ resource "random_password" "password" {
 }
 
 resource "random_string" "identifier" {
-  length  = 20
+  length  = 5
   special = false
   upper   = false
   lower   = true
@@ -20,7 +20,7 @@ resource "random_string" "identifier" {
 }
 
 resource "aws_mq_broker" "mq" {
-  broker_name                = var.git
+  broker_name                = substr("${var.git}-${random_string.identifier.result}", 0, 50) # 50 character max length
   engine_type                = var.engine_type
   engine_version             = var.engine_version
   host_instance_type         = var.host_instance_type
@@ -46,7 +46,7 @@ resource "aws_mq_broker" "mq" {
 
   encryption_options {
     use_aws_owned_key = var.use_aws_owned_key
-    kms_key_id        = var.use_aws_owned_key ? null : module.kms[0].key_id
+    kms_key_id        = var.use_aws_owned_key ? null : module.kms[0].arn
   }
 
   /*
