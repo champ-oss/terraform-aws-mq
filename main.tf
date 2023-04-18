@@ -57,7 +57,6 @@ resource "aws_mq_broker" "mq" {
   # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#maintenance_window_start_time
 
   lifecycle {
-    prevent_destroy = true
     ignore_changes = [
       maintenance_window_start_time["day_of_week"],
       maintenance_window_start_time["time_of_day"],
