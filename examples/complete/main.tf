@@ -41,4 +41,5 @@ module "aws_mq_broker" {
   host_instance_type       = "mq.m5.large"
   git                      = local.git
   apply_immediately        = true
+  engine_version           = "3.8.22"
 }
