@@ -38,7 +38,7 @@ module "cluster" {
   source_security_group_id   = aws_security_group.test.id
   subnet_ids                 = data.aws_subnets.private.ids
   deployment_mode            = "CLUSTER_MULTI_AZ"
-  host_instance_type         = "mq.t3.micro"
+  host_instance_type         = "mq.m5.large"
   git                        = local.git
   apply_immediately          = true
   engine_version             = "3.8.22"
