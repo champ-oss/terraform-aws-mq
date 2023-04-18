@@ -104,3 +104,15 @@ variable "enable_audit_logs" {
   type        = bool
   default     = false
 }
+
+variable "apply_immediately" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#apply_immediately"
+  type        = bool
+  default     = false
+}
+
+variable "auto_minor_version_upgrade" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#auto_minor_version_upgrade"
+  type        = bool
+  default     = true
+}

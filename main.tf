@@ -16,7 +16,7 @@ resource "random_string" "identifier" {
   special = false
   upper   = false
   lower   = true
-  number  = true
+  numeric = true
 }
 
 resource "aws_mq_broker" "mq" {
@@ -27,10 +27,11 @@ resource "aws_mq_broker" "mq" {
   security_groups            = [aws_security_group.mq.id]
   deployment_mode            = var.deployment_mode
   publicly_accessible        = var.publicly_accessible
-  auto_minor_version_upgrade = false
+  auto_minor_version_upgrade = var.auto_minor_version_upgrade
   tags                       = merge(local.tags, var.tags)
   subnet_ids                 = var.subnet_ids
   storage_type               = var.storage_type
+  apply_immediately          = var.apply_immediately
 
   logs {
     general = var.enable_general_logs
@@ -57,7 +58,6 @@ resource "aws_mq_broker" "mq" {
   # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#maintenance_window_start_time
 
   lifecycle {
-    prevent_destroy = true
     ignore_changes = [
       maintenance_window_start_time["day_of_week"],
       maintenance_window_start_time["time_of_day"],
