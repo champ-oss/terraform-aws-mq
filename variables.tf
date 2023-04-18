@@ -5,7 +5,7 @@ variable "git" {
 }
 
 variable "engine_version" {
-  default     = "3.8.22"
+  default     = "3.10.20"
   type        = string
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#engine_version"
 }
