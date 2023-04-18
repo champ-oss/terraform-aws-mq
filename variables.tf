@@ -116,3 +116,15 @@ variable "auto_minor_version_upgrade" {
   type        = bool
   default     = true
 }
+
+variable "use_aws_owned_key" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#use_aws_owned_key"
+  type        = bool
+  default     = false
+}
+
+variable "kms_deletion_window_in_days" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key#deletion_window_in_days"
+  type        = number
+  default     = 30
+}

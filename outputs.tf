@@ -38,3 +38,13 @@ output "instances" {
   value       = aws_mq_broker.mq.instances
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances"
 }
+
+output "kms_key_id" {
+  value       = var.use_aws_owned_key ? null : module.kms[0].key_id
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key#key_id"
+}
+
+output "kms_arn" {
+  value       = var.use_aws_owned_key ? null : module.kms[0].arn
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key#arn"
+}

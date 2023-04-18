@@ -44,6 +44,11 @@ resource "aws_mq_broker" "mq" {
     time_zone   = var.maintenance_time_zone
   }
 
+  encryption_options {
+    use_aws_owned_key = var.use_aws_owned_key
+    kms_key_id        = var.use_aws_owned_key ? null : module.kms[0].key_id
+  }
+
   /*
   note: AWS currently does not support updating RabbitMQ users. Updates to users can only be in the RabbitMQ UI.
   https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#example-usage
