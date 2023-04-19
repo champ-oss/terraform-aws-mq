@@ -5,7 +5,7 @@ variable "git" {
 }
 
 variable "engine_version" {
-  default     = "3.8.22"
+  default     = "3.10.20"
   type        = string
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#engine_version"
 }
@@ -103,4 +103,28 @@ variable "enable_audit_logs" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#audit"
   type        = bool
   default     = false
+}
+
+variable "apply_immediately" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#apply_immediately"
+  type        = bool
+  default     = false
+}
+
+variable "auto_minor_version_upgrade" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#auto_minor_version_upgrade"
+  type        = bool
+  default     = true
+}
+
+variable "use_aws_owned_key" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#use_aws_owned_key"
+  type        = bool
+  default     = false
+}
+
+variable "kms_deletion_window_in_days" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key#deletion_window_in_days"
+  type        = number
+  default     = 30
 }
