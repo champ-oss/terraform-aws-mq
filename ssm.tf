@@ -4,4 +4,8 @@ resource "aws_ssm_parameter" "this" {
   type        = "SecureString"
   value       = random_password.password.result
   tags        = merge(local.tags, var.tags)
+
+  lifecycle {
+    ignore_changes = [name]
+  }
 }

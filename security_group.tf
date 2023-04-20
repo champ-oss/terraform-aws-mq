@@ -2,6 +2,10 @@ resource "aws_security_group" "mq" {
   name_prefix = "${var.git}-mq-${random_string.identifier.result}"
   vpc_id      = var.vpc_id
   tags        = merge(local.tags, var.tags)
+
+  lifecycle {
+    ignore_changes = [name_prefix]
+  }
 }
 
 resource "aws_security_group_rule" "mq_console_ingress" {
