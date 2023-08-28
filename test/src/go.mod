@@ -3,7 +3,7 @@ module github.com/champ-oss/terraform-aws-mq
 go 1.17
 
 require (
-	github.com/gruntwork-io/terratest v0.43.9
+	github.com/gruntwork-io/terratest v0.43.13
 	github.com/stretchr/testify v1.8.1
 )
 
