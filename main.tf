@@ -35,7 +35,6 @@ resource "aws_mq_broker" "mq" {
 
   logs {
     general = var.enable_general_logs
-    audit   = var.enable_audit_logs
   }
 
   maintenance_window_start_time {
