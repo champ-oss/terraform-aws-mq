@@ -93,18 +93,6 @@ variable "cidr_allow_list" {
   default     = null
 }
 
-variable "enable_general_logs" {
-  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#general"
-  type        = bool
-  default     = true
-}
-
-variable "enable_audit_logs" {
-  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#audit"
-  type        = bool
-  default     = false
-}
-
 variable "apply_immediately" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#apply_immediately"
   type        = bool
