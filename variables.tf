@@ -116,3 +116,45 @@ variable "kms_deletion_window_in_days" {
   type        = number
   default     = 30
 }
+
+variable "ssm_create_connection_parameter" {
+  description = "Create an SSM parameter containing connection information"
+  type        = bool
+  default     = true
+}
+
+variable "ssm_enable_random_name_suffix" {
+  description = "Add a random ID to the end of the SSM parameter names"
+  type        = bool
+  default     = true
+}
+
+variable "ssm_connection_identifier" {
+  description = "Identifier for the connection SSM parameter"
+  type        = string
+  default     = "name"
+}
+
+variable "ssm_connection_identifier_value" {
+  description = "Identifier value for the connection SSM parameter"
+  type        = string
+  default     = ""
+}
+
+variable "ssm_shared_accounts" {
+  description = "AWS accounts to share the SSM parameters"
+  type        = list(string)
+  default     = []
+}
+
+variable "ssm_shared_principal_arns" {
+  description = "AWS principal ARN patterns to share the SSM parameters"
+  type        = list(string)
+  default     = []
+}
+
+variable "ssm_prefix_connection" {
+  description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter#name"
+  type        = string
+  default     = "/rabbit/connection"
+}
