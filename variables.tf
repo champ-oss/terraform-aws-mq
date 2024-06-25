@@ -123,7 +123,11 @@ variable "ssm_create_connection_parameter" {
   default     = true
 }
 
-variable "ssm_enable_random_name_suffix" {}
+variable "ssm_enable_random_name_suffix" {
+  description = "Add a random ID to the end of the SSM parameter names"
+  type        = bool
+  default     = true
+}
 
 variable "ssm_shared_accounts" {
   description = "AWS accounts to share the SSM parameters"
