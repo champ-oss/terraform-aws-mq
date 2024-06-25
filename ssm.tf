@@ -15,8 +15,8 @@ module "ssm_connection" {
   source                    = "github.com/champ-oss/terraform-aws-ssm.git?ref=v1.0.3-f38d8fb"
   git                       = var.git
   name                      = var.ssm_prefix_connection
-  enable_kms                = var.ssm_shared_principal_arns != [] ? true : false
-  enable_ram_permission     = var.ssm_shared_principal_arns != [] ? true : false
+  enable_kms                = length(var.ssm_shared_principal_arns) > 0 ? true : false
+  enable_ram_permission     = length(var.ssm_shared_principal_arns) > 0 ? true : false
   enable_random_name_suffix = var.ssm_enable_random_name_suffix
   shared_accounts           = var.ssm_shared_accounts
   shared_principal_arns     = var.ssm_shared_principal_arns
