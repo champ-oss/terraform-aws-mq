@@ -129,6 +129,18 @@ variable "ssm_enable_random_name_suffix" {
   default     = true
 }
 
+variable "ssm_connection_identifier" {
+  description = "Identifier for the connection SSM parameter"
+  type        = string
+  default     = "name"
+}
+
+variable "ssm_connection_identifier_value" {
+  description = "Identifier value for the connection SSM parameter"
+  type        = string
+  default     = ""
+}
+
 variable "ssm_shared_accounts" {
   description = "AWS accounts to share the SSM parameters"
   type        = list(string)
