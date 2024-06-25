@@ -23,7 +23,7 @@ module "ssm_connection" {
   tags                      = merge(local.tags, var.tags)
 
   value = jsonencode({
-    var.ssm_connection_identifier = var.ssm_connection_identifier_value
+    (var.ssm_connection_identifier) = var.ssm_connection_identifier_value
     uri                           = aws_mq_broker.mq.instances[0].endpoints[0]
     username                      = var.username
     password                      = random_password.password.result
