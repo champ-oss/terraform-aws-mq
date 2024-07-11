@@ -1,9 +1,9 @@
 resource "aws_ssm_parameter" "this" {
   count       = var.enabled ? 1 : 0
-  name        = "${var.git}-mq-${random_string.identifier.result}"
+  name        = "${var.git}-mq-${random_string.identifier[0].result}"
   description = "mq password"
   type        = "SecureString"
-  value       = random_password.password.result
+  value       = random_password.password[0].result
   tags        = merge(local.tags, var.tags)
 
   lifecycle {
@@ -25,8 +25,8 @@ module "ssm_connection" {
   enabled                   = var.enabled
   value = jsonencode({
     (var.ssm_connection_identifier) = var.ssm_connection_identifier_value
-    uri                             = aws_mq_broker.mq.instances[0].endpoints[0]
+    uri                             = aws_mq_broker.mq[0].instances[0].endpoints[0]
     username                        = var.username
-    password                        = random_password.password.result
+    password                        = random_password.password[0].result
   })
 }

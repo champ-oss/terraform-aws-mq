@@ -16,7 +16,7 @@ resource "aws_security_group_rule" "mq_console_ingress" {
   from_port                = 443
   to_port                  = 443
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.mq.id
+  security_group_id        = aws_security_group.mq[0].id
   source_security_group_id = var.source_security_group_id
 }
 
@@ -27,7 +27,7 @@ resource "aws_security_group_rule" "mq_mgmt_api_ingress" {
   from_port                = 15671
   to_port                  = 15671
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.mq.id
+  security_group_id        = aws_security_group.mq[0].id
   source_security_group_id = var.source_security_group_id
 }
 
@@ -38,7 +38,7 @@ resource "aws_security_group_rule" "mq_amqp_broker_ingress" {
   from_port                = 5671
   to_port                  = 5671
   protocol                 = "tcp"
-  security_group_id        = aws_security_group.mq.id
+  security_group_id        = aws_security_group.mq[0].id
   source_security_group_id = var.source_security_group_id
 }
 
@@ -49,7 +49,7 @@ resource "aws_security_group_rule" "mq_console_ingress_cidr" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  security_group_id = aws_security_group.mq.id
+  security_group_id = aws_security_group.mq[0].id
   cidr_blocks       = var.cidr_allow_list
 }
 
@@ -60,7 +60,7 @@ resource "aws_security_group_rule" "mq_mgmt_api_ingress_cidr" {
   from_port         = 15671
   to_port           = 15671
   protocol          = "tcp"
-  security_group_id = aws_security_group.mq.id
+  security_group_id = aws_security_group.mq[0].id
   cidr_blocks       = var.cidr_allow_list
 }
 
@@ -71,6 +71,6 @@ resource "aws_security_group_rule" "mq_amqp_broker_ingress_cidr" {
   from_port         = 5671
   to_port           = 5671
   protocol          = "tcp"
-  security_group_id = aws_security_group.mq.id
+  security_group_id = aws_security_group.mq[0].id
   cidr_blocks       = var.cidr_allow_list
 }
