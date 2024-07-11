@@ -41,7 +41,7 @@ data "aws_subnets" "private" {
 variable "enabled" {
   description = "module enabled"
   type        = bool
-  default     = false
+  default     = true
 }
 
 resource "aws_security_group" "test" {
