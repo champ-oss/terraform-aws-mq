@@ -1,6 +1,6 @@
 resource "aws_security_group" "mq" {
   count       = var.enabled ? 1 : 0
-  name_prefix = "${var.git}-mq-${random_string.identifier.result}"
+  name_prefix = "${var.git}-mq-${random_string.identifier[0].result}"
   vpc_id      = var.vpc_id
   tags        = merge(local.tags, var.tags)
 
