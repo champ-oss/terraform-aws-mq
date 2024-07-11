@@ -58,7 +58,7 @@ resource "aws_mq_broker" "mq" {
 
   user {
     username = var.username
-    password = random_password.password.result
+    password = random_password.password[0].result
   }
 
   # Amazon MQ currently does not support updating the maintenance window. Changes to the maintenance window start time will force a new broker to be created.
