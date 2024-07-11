@@ -1,4 +1,5 @@
 resource "aws_security_group" "mq" {
+  count       = var.enabled ? 1 : 0
   name_prefix = "${var.git}-mq-${random_string.identifier.result}"
   vpc_id      = var.vpc_id
   tags        = merge(local.tags, var.tags)
@@ -9,6 +10,7 @@ resource "aws_security_group" "mq" {
 }
 
 resource "aws_security_group_rule" "mq_console_ingress" {
+  count                    = var.enabled ? 1 : 0
   description              = "ingress to mq console"
   type                     = "ingress"
   from_port                = 443
@@ -19,6 +21,7 @@ resource "aws_security_group_rule" "mq_console_ingress" {
 }
 
 resource "aws_security_group_rule" "mq_mgmt_api_ingress" {
+  count                    = var.enabled ? 1 : 0
   description              = "ingress to mq management api"
   type                     = "ingress"
   from_port                = 15671
@@ -29,6 +32,7 @@ resource "aws_security_group_rule" "mq_mgmt_api_ingress" {
 }
 
 resource "aws_security_group_rule" "mq_amqp_broker_ingress" {
+  count                    = var.enabled ? 1 : 0
   description              = "ingress to AMQP-broker-endpoint"
   type                     = "ingress"
   from_port                = 5671
@@ -39,7 +43,7 @@ resource "aws_security_group_rule" "mq_amqp_broker_ingress" {
 }
 
 resource "aws_security_group_rule" "mq_console_ingress_cidr" {
-  count             = var.cidr_allow_list != null ? 1 : 0
+  count             = var.enabled && var.cidr_allow_list != null ? 1 : 0
   description       = "cidr list to mq console via 443"
   type              = "ingress"
   from_port         = 443
@@ -50,7 +54,7 @@ resource "aws_security_group_rule" "mq_console_ingress_cidr" {
 }
 
 resource "aws_security_group_rule" "mq_mgmt_api_ingress_cidr" {
-  count             = var.cidr_allow_list != null ? 1 : 0
+  count             = var.enabled && var.cidr_allow_list != null ? 1 : 0
   description       = "cidr list to mq management api via 15671"
   type              = "ingress"
   from_port         = 15671
@@ -61,7 +65,7 @@ resource "aws_security_group_rule" "mq_mgmt_api_ingress_cidr" {
 }
 
 resource "aws_security_group_rule" "mq_amqp_broker_ingress_cidr" {
-  count             = var.cidr_allow_list != null ? 1 : 0
+  count             = var.enabled && var.cidr_allow_list != null ? 1 : 0
   description       = "cidr list to AMQP-broker-endpoint via 5671"
   type              = "ingress"
   from_port         = 5671

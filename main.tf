@@ -7,11 +7,13 @@ locals {
 }
 
 resource "random_password" "password" {
+  count   = var.enabled ? 1 : 0
   length  = 20
   special = false
 }
 
 resource "random_string" "identifier" {
+  count   = var.enabled ? 1 : 0
   length  = 5
   special = false
   upper   = false
@@ -20,11 +22,12 @@ resource "random_string" "identifier" {
 }
 
 resource "aws_mq_broker" "mq" {
-  broker_name                = substr("${var.git}-${random_string.identifier.result}", 0, 50) # 50 character max length
+  count                      = var.enabled ? 1 : 0
+  broker_name                = substr("${var.git}-${random_string.identifier[0].result}", 0, 50) # 50 character max length
   engine_type                = var.engine_type
   engine_version             = var.engine_version
   host_instance_type         = var.host_instance_type
-  security_groups            = [aws_security_group.mq.id]
+  security_groups            = [aws_security_group.mq[0].id]
   deployment_mode            = var.deployment_mode
   publicly_accessible        = var.publicly_accessible
   auto_minor_version_upgrade = var.auto_minor_version_upgrade

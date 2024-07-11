@@ -1,41 +1,41 @@
 output "arn" {
-  value       = aws_mq_broker.mq.arn
+  value       = var.enabled ? aws_mq_broker.mq[0].arn : ""
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#arn"
 }
 
 output "id" {
-  value       = aws_mq_broker.mq.id
+  value       = var.enabled ? aws_mq_broker.mq[0].id : ""
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#id"
 }
 
 output "console_url" {
-  value       = aws_mq_broker.mq.instances[0].console_url
+  value       = var.enabled ? aws_mq_broker.mq[0].instances[0].console_url : ""
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances.0.console_url"
 }
 
 output "broker_host" {
-  value       = trim(aws_mq_broker.mq.instances[0].console_url, "https://")
+  value       = var.enabled ? trim(aws_mq_broker.mq[0].instances[0].console_url, "https://") : ""
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances.0.console_url"
 }
 
 output "ip_address" {
-  value       = aws_mq_broker.mq.instances[0].ip_address
+  value       = var.enabled ? aws_mq_broker.mq[0].instances[0].ip_address : ""
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances.0.ip_address"
 }
 
 output "password" {
-  value       = random_password.password.result
+  value       = var.enabled ? random_password.password[0].result : ""
   sensitive   = true
   description = "Rabbit admin password"
 }
 
 output "primary_amqp_ssl_endpoint" {
-  value       = aws_mq_broker.mq.instances[0].endpoints[0]
+  value       = var.enabled ? aws_mq_broker.mq[0].instances[0].endpoints[0] : ""
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances.0.endpoints"
 }
 
 output "instances" {
-  value       = aws_mq_broker.mq.instances
+  value       = var.enabled ? aws_mq_broker.mq[0].instances : []
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances"
 }
 

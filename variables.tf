@@ -158,3 +158,9 @@ variable "ssm_prefix_connection" {
   type        = string
   default     = "/rabbit/connection"
 }
+
+variable "enabled" {
+  description = "Set to false to prevent the module from creating any resources"
+  type        = bool
+  default     = true
+}
