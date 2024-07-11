@@ -53,7 +53,7 @@ resource "aws_security_group" "test" {
 module "cluster" {
   source                     = "../../"
   vpc_id                     = data.aws_vpcs.this.ids[0]
-  source_security_group_id   = aws_security_group.test[0].id
+  source_security_group_id   = try(aws_security_group.test[0].id, "")
   subnet_ids                 = data.aws_subnets.private.ids
   deployment_mode            = "CLUSTER_MULTI_AZ"
   host_instance_type         = "mq.m5.large"
@@ -67,7 +67,7 @@ module "cluster" {
 module "single_instance" {
   source                     = "../../"
   vpc_id                     = data.aws_vpcs.this.ids[0]
-  source_security_group_id   = aws_security_group.test[0].id
+  source_security_group_id   = try(aws_security_group.test[0].id, "")
   subnet_ids                 = [data.aws_subnets.private.ids[0]]
   deployment_mode            = "SINGLE_INSTANCE"
   host_instance_type         = "mq.t3.micro"

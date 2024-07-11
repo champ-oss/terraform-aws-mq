@@ -25,8 +25,8 @@ module "ssm_connection" {
   enabled                   = var.enabled
   value = jsonencode({
     (var.ssm_connection_identifier) = var.ssm_connection_identifier_value
-    uri                             = aws_mq_broker.mq[0].instances[0].endpoints[0]
+    uri                             = try(aws_mq_broker.mq[0].instances[0].endpoints[0], "")
     username                        = var.username
-    password                        = random_password.password[0].result
+    password                        = try(random_password.password[0].result, "")
   })
 }
