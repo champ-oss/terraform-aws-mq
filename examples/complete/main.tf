@@ -110,6 +110,6 @@ output "broker_arn" {
   description = "rabbit broker arn"
 }
 
-output "all" {
-  value = module.single_instance
+output "connection_ssm_arn" {
+  value = module.cluster.connection_ssm_arn
 }
