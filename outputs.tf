@@ -48,3 +48,23 @@ output "kms_arn" {
   value       = var.use_aws_owned_key ? null : module.kms[0].arn
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key#arn"
 }
+
+output "password_ssm_name" {
+  value       = try(aws_ssm_parameter.this[0].name, null)
+  description = "The name of the SSM parameter that stores the RabbitMQ password"
+}
+
+output "password_ssm_arn" {
+  value       = try(aws_ssm_parameter.this[0].arn, null)
+  description = "The ARN of the SSM parameter that stores the RabbitMQ password"
+}
+
+output "connection_ssm_name" {
+  value       = try(module.ssm_connection[0].name, null)
+  description = "The name of the SSM parameter that stores the RabbitMQ connection information"
+}
+
+output "connection_ssm_arn" {
+  value       = try(module.ssm_connection[0].arn, null)
+  description = "The ARN of the SSM parameter that stores the RabbitMQ connection information"
+}

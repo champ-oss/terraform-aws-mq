@@ -109,3 +109,7 @@ output "broker_arn" {
   value       = module.cluster.arn
   description = "rabbit broker arn"
 }
+
+output "all" {
+  value = module.single_instance
+}
