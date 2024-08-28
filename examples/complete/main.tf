@@ -59,7 +59,7 @@ module "cluster" {
   host_instance_type         = "mq.m5.large"
   git                        = local.git
   apply_immediately          = true
-  engine_version             = "3.8.22"
+  engine_version             = "3.10.20"
   auto_minor_version_upgrade = true
   enabled                    = false
 }
@@ -73,7 +73,7 @@ module "single_instance" {
   host_instance_type         = "mq.t3.micro"
   git                        = local.git
   apply_immediately          = true
-  engine_version             = "3.8.22"
+  engine_version             = "3.10.20"
   use_aws_owned_key          = true
   auto_minor_version_upgrade = true
   enabled                    = var.enabled
@@ -108,4 +108,8 @@ output "broker_id" {
 output "broker_arn" {
   value       = module.cluster.arn
   description = "rabbit broker arn"
+}
+
+output "connection_ssm_arn" {
+  value = module.cluster.connection_ssm_arn
 }
