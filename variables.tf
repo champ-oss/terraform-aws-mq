@@ -148,7 +148,7 @@ variable "ssm_shared_accounts" {
 }
 
 variable "ssm_shared_principal_arns" {
-  description = "AWS principal ARN patterns to share the SSM parameters"
+  description = "AWS principal ARN patterns to share the SSM parameter"
   type        = list(string)
   default     = []
 }
