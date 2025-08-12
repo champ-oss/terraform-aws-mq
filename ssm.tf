@@ -13,7 +13,7 @@ resource "aws_ssm_parameter" "this" {
 
 module "ssm_connection" {
   count                     = var.ssm_create_connection_parameter ? 1 : 0
-  source                    = "github.com/champ-oss/terraform-aws-ssm.git?ref=v1.0.6-c73cf92" # Update to the latest version as needed
+  source                    = "github.com/champ-oss/terraform-aws-ssm.git?ref=v1.0.6-c73cf92"
   git                       = var.git
   name                      = var.ssm_prefix_connection
   enable_kms                = length(var.ssm_shared_principal_arns) > 0 ? true : false
