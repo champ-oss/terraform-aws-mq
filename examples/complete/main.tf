@@ -60,7 +60,7 @@ module "cluster" {
   git                        = local.git
   apply_immediately          = true
   auto_minor_version_upgrade = true
-  enabled                    = false
+  enabled                    = var.enabled
 }
 
 module "single_instance" {
