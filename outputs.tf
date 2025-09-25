@@ -18,6 +18,11 @@ output "broker_host" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances.0.console_url"
 }
 
+output "broker_endpoint" {
+  value = regex("^(?:amqps?://)?([^:]+)", aws_mq_broker.this.instances[0].endpoints[0])[0]
+  description = "The broker endpoint without protocol"
+}
+
 output "ip_address" {
   value       = var.enabled ? aws_mq_broker.mq[0].instances[0].ip_address : ""
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances.0.ip_address"
