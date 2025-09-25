@@ -19,7 +19,7 @@ output "broker_host" {
 }
 
 output "broker_endpoint" {
-  value = regex("^(?:amqps?://)?([^:]+)", aws_mq_broker.mq.instances[0].endpoints[0])[0]
+  value = var.enabled ? regex("^(?:amqps?://)?([^:]+)", aws_mq_broker.mq.instances[0].endpoints[0])[0] : ""
   description = "The broker endpoint without protocol"
 }
 
