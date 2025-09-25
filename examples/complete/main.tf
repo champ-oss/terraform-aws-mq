@@ -92,6 +92,11 @@ output "broker_host" {
   description = "console host plus protocol"
 }
 
+output "broker_endpoint" {
+  value       = "regex(\"^(?:amqps?://)?([^:]+)\", module.cluster.primary_amqp_ssl_endpoint)[0]"
+  description = "The broker endpoint without protocol"
+}
+
 output "broker_pw" {
   value       = module.cluster.password
   sensitive   = true
