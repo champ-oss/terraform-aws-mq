@@ -14,7 +14,7 @@ output "console_url" {
 }
 
 output "broker_host" {
-  value       = var.enabled ? trim(aws_mq_broker.mq[0].instances[0].console_url, "https://") : ""
+  value       = var.enabled ? trimprefix(aws_mq_broker.mq[0].instances[0].console_url, "https://") : ""
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#instances.0.console_url"
 }
 

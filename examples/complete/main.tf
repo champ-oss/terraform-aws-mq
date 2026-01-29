@@ -88,7 +88,7 @@ output "primary_amqp_ssl_endpoint" {
 }
 
 output "broker_host" {
-  value       = trim(module.cluster.console_url, "https://")
+  value       = trimprefix(module.single_instance.console_url, "https://")
   description = "console host plus protocol"
 }
 
