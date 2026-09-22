@@ -61,6 +61,7 @@ module "cluster" {
   apply_immediately          = true
   auto_minor_version_upgrade = true
   enabled                    = false
+  rabbit_host_instance_type  = "mq.m7g.medium"
 }
 
 module "single_instance" {
