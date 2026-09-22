@@ -61,7 +61,6 @@ module "cluster" {
   apply_immediately          = true
   auto_minor_version_upgrade = true
   enabled                    = false
-  rabbit_host_instance_type  = "mq.m7g.medium"
 }
 
 module "single_instance" {
@@ -70,7 +69,7 @@ module "single_instance" {
   source_security_group_id   = try(aws_security_group.test[0].id, "")
   subnet_ids                 = [data.aws_subnets.private.ids[0]]
   deployment_mode            = "SINGLE_INSTANCE"
-  host_instance_type         = "mq.t3.micro"
+  host_instance_type         = "mq.m7g.medium"
   git                        = local.git
   apply_immediately          = true
   use_aws_owned_key          = true
