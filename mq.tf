@@ -45,6 +45,7 @@ resource "aws_mq_broker" "mq" {
     ignore_changes = [
       broker_name,
       engine_version,
+      user, # MQ users are not returned by the API and cannot be updated after creation (AWS provider v6 no longer suppresses this diff)
       maintenance_window_start_time["day_of_week"],
       maintenance_window_start_time["time_of_day"],
       maintenance_window_start_time["time_zone"]
