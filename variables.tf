@@ -18,7 +18,7 @@ variable "engine_type" {
 
 variable "host_instance_type" {
   description = "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/mq_broker#host_instance_type"
-  default     = "mq.t3.micro"
+  default     = "mq.m7g.medium"
   type        = string
 }
 
