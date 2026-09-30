@@ -56,7 +56,7 @@ module "cluster" {
   source_security_group_id   = try(aws_security_group.test[0].id, "")
   subnet_ids                 = data.aws_subnets.private.ids
   deployment_mode            = "CLUSTER_MULTI_AZ"
-  host_instance_type         = "mq.m5.large"
+  host_instance_type         = "mq.m7g.medium"
   git                        = local.git
   apply_immediately          = true
   auto_minor_version_upgrade = true
